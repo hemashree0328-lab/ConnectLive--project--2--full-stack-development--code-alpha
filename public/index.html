@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ConnectLive — Meet without limits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="authView" class="auth-wrap">
+  <div class="auth-card">
+    <div class="brand"><span class="brand-mark">C</span> Connect<span>Live</span></div>
+    <p class="eyebrow">YOUR SPACE TO CONNECT</p><h1>Good conversations<br><em>start here.</em></h1>
+    <p class="muted">Meet, share ideas and collaborate in real time.</p>
+    <div class="tabs"><button class="tab active" data-mode="login">Log in</button><button class="tab" data-mode="register">Create account</button></div>
+    <form id="authForm"><label>Username</label><input id="authUsername" minlength="2" placeholder="Your name" required><label>Password</label><input id="authPassword" type="password" minlength="8" placeholder="At least 8 characters" required><button class="primary full" id="authSubmit">Log in <span>→</span></button></form>
+    <p id="authError" class="error"></p><small class="muted">Demo account data is stored locally on the server.</small>
+  </div>
+  <div class="auth-side"><div class="orb orb1"></div><div class="orb orb2"></div><div class="side-content"><div class="live-pill"><i></i> YOUR TEAM, TOGETHER</div><h2>Ideas move faster<br>when we're <em>together.</em></h2><p>Video, voice, files and a shared canvas — all in one calm workspace.</p><div class="mini-call"><div class="mini-avatars"><b>AM</b><b>JR</b><b>SK</b><b>+4</b></div><span>Creative sync · 7 people</span><strong>● LIVE</strong></div></div></div>
+</div>
+<div id="appView" class="app hidden">
+  <aside class="sidebar"><div class="brand"><span class="brand-mark">C</span> Connect<span>Live</span></div><div class="workspace"><small>WORKSPACE</small><b>My workspace</b></div><nav><span class="nav-label">MENU</span><a class="nav-item selected">▦ &nbsp; Overview</a><a class="nav-item" href="#meeting">◉ &nbsp; Meetings</a><a class="nav-item" href="#tools">✳ &nbsp; Collaboration</a></nav><div class="sidebar-bottom"><div class="secure-note">✦ &nbsp; Private by design</div><button id="logoutBtn" class="logout">↪ &nbsp; Log out</button></div></aside>
+  <main class="main"><header class="topbar"><div><span class="crumb">Workspace /</span> Overview</div><div class="profile"><span class="avatar" id="userAvatar">U</span><span id="welcomeName">User</span></div></header>
+  <section class="welcome"><div><p class="eyebrow">MONDAY, MEET PRODUCTIVITY</p><h1>Make room for<br><em>great ideas.</em></h1><p class="muted">Bring your people together, wherever they are.</p></div><div class="welcome-art"><div class="art-ring"></div><div class="art-card"><span>✦</span><b>Better together</b><small>One click away</small></div></div></section>
+  <section class="quick-grid" id="meeting"><article class="quick-card featured"><div class="card-icon">＋</div><div><h3>Start a meeting</h3><p>Create a room and invite your team.</p></div><button id="createBtn" class="primary">Create room <span>→</span></button></article><article class="quick-card"><div class="card-icon purple">↗</div><div><h3>Join a meeting</h3><p>Have a room code? Enter it here.</p></div><div class="join-row"><input id="roomInput" placeholder="Enter room ID"><button id="joinBtn" class="secondary">Join</button></div></article></section>
+  <section class="section-head" id="tools"><div><p class="eyebrow">BUILT FOR TEAMWORK</p><h2>Everything in one place</h2></div><span class="muted">Your collaboration toolkit</span></section>
+  <section class="tools-grid"><div class="tool-card"><span>◉</span><b>HD video & audio</b><small>Meet face to face</small></div><div class="tool-card"><span>▣</span><b>Screen sharing</b><small>Present your work</small></div><div class="tool-card"><span>✎</span><b>Live whiteboard</b><small>Think out loud</small></div><div class="tool-card"><span>↥</span><b>File sharing</b><small>Send files in-room</small></div><div class="tool-card"><span>☷</span><b>Team chat</b><small>Keep the conversation</small></div></section>
+  <footer>© 2026 ConnectLive <span>Made for meaningful collaboration.</span></footer></main>
+</div>
+<div id="meetingView" class="meeting hidden">
+  <header class="meeting-top"><div class="brand"><span class="brand-mark">C</span> Connect<span>Live</span></div><div class="room-meta"><b id="roomTitle">Meeting room</b><span id="roomCode"></span><button id="copyRoom" class="tiny">Copy invite</button></div><button id="backBtn" class="tiny">← Dashboard</button></header>
+  <div class="meeting-layout"><section class="stage"><div class="stage-heading"><div><p class="eyebrow">LIVE SESSION</p><h2>You're in the room.</h2></div><span class="live-pill"><i></i> LIVE</span></div><div id="videos" class="videos"><div class="video-tile local-tile"><video id="localVideo" autoplay muted playsinline></video><span class="video-label">You</span></div></div><div class="controls"><button id="micBtn" class="control">♩<small>Mute</small></button><button id="cameraBtn" class="control">▣<small>Camera</small></button><button id="screenBtn" class="control">▧<small>Share screen</small></button><button id="leaveBtn" class="control danger">☎<small>Leave</small></button></div><p id="meetingStatus" class="status">Connecting your devices…</p></section>
+  <aside class="collab"><div class="panel-tabs"><button class="panel-tab active" data-panel="chatPanel">Chat</button><button class="panel-tab" data-panel="boardPanel">Whiteboard</button><button class="panel-tab" data-panel="filesPanel">Files</button></div>
+  <div id="chatPanel" class="panel"><div class="panel-title">Meeting chat <small>Messages are shared with this room</small></div><div id="messages" class="messages"></div><form id="chatForm" class="composer"><input id="chatInput" placeholder="Write a message…" maxlength="1000"><button class="send">↑</button></form></div>
+  <div id="boardPanel" class="panel hidden"><div class="panel-title">Shared whiteboard <small>Draw together in real time</small></div><canvas id="whiteboard" width="700" height="460"></canvas><div class="board-tools"><input type="color" id="penColor" value="#25b994"><button id="clearBoard" class="secondary">Clear board</button></div></div>
+  <div id="filesPanel" class="panel hidden"><div class="panel-title">Shared files <small>Upload a file up to 10 MB</small></div><label class="upload-box">＋ Choose a file<input id="fileInput" type="file" hidden></label><div id="fileList" class="file-list"></div></div>
+  </aside></div>
+</div>
+<div id="toast" class="toast"></div>
+<script src="/socket.io/socket.io.js"></script><script src="app.js"></script>
+</body></html>
